@@ -1,10 +1,15 @@
 import React from 'react'
-import {Button, Input, Upload, TextArea, Gap} from '../../components'
+import {Button, Input, Upload, TextArea, Gap, Link} from '../../components'
 import './createBlog.scss'
+import { useHistory } from 'react-router-dom'
+
 
 const CreateBlog = () => {
+    const history = useHistory();
+
     return (
         <div className="blog-post">
+            <Link title="kembali" onClick={() => history.push('/')} />
             <p className="title">Create New Blog Posts</p>
             <Input label="Post Title" />
             <Upload />
