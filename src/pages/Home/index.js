@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Button, BlogItem, Gap} from '../../components'
 import './home.scss'
 import { useHistory } from 'react-router-dom'
+import Axios from 'axios'
 
 const Home = () => {
+    useEffect(() => {
+        Axios.get('http://localhost:4000/v1/blog/posts')
+        .then(result => {
+            console.log('data: ', result.data)
+        })
+        .catch(err => {
+            console.log('error: ', err)
+        })
+    }, [])
+
     const history = useHistory();
     
     return (
