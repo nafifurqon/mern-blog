@@ -21,7 +21,8 @@ const Home = () => {
             // console.log('data: ', result.data)
             const responseAPI = result.data;
 
-            setDataBlog(responseAPI.data)
+            setDataBlog(responseAPI.data);
+            dispatch({type: 'UPDATE_DATA_BLOG', payload: responseAPI.data})
         })
         .catch(err => {
             console.log('error: ', err)
