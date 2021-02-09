@@ -14,7 +14,7 @@ const Home = () => {
         .then(result => {
             const responseAPI = result.data;
 
-            dispatch({type: 'UPDATE_DATA_BLOG', payload: responseAPI.data})
+            dispatch()
         })
         .catch(err => {
             console.log('error: ', err)
