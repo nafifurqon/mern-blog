@@ -7,14 +7,14 @@ import { useHistory } from 'react-router-dom'
 
 const BlogItem = (props) => {
     const history = useHistory();
-    
+    const {image, title, name, date, body} = props
     return (
         <div className="blog-item">
-            <img cllassName="image-thumb" src={props.image} alt="post" />
+            <img cllassName="image-thumb" src={image} alt="post" />
             <div className="content-detail">
-                <p className="title">{props.title}</p>
-                <p className="author">{props.name} - {props.date}</p>
-                <p className="body">{props.body}</p>
+                <p className="title">{title}</p>
+                <p className="author">{name} - {date}</p>
+                <p className="body">{body}</p>
                 <Gap height={20} />
                 <Button title="view detail" onClick={() => history.push('/detail-blog')} />
             </div>
