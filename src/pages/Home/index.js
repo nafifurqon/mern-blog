@@ -29,7 +29,7 @@ const Home = () => {
             <Gap height={20} />
             <div className="content-wrapper">
                 {dataBlog.map(blog => {
-                    return <BlogItem />>
+                    return <BlogItem key={blog._id} />
                 })}
             </div>
             <div className="pagination">
