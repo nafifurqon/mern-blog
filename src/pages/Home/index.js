@@ -36,6 +36,8 @@ const Home = () => {
             <div className="pagination">
                 <Button title="previous" />
                 <Gap width={20} />
+                <p className="text-page">1 / 3</p>
+                <Gap width={20} />
                 <Button title="next" />
             </div>
             <Gap height={20} />
