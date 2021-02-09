@@ -6,7 +6,7 @@ import Axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
 
 const Home = () => {
-    const { dataBlog } = useSelector(state => state.HomeReducer);
+    const { dataBlog } = useSelector(state => state.homeReducer);
     const dispatch = useDispatch();
 
     useEffect(() => {
