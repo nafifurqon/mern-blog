@@ -1,3 +1,3 @@
 const setDataBlog = (payload) => {
-    return {type: 'UPDATE_DATA_BLOG', payload: payload}
+    return {type: 'UPDATE_DATA_BLOG', payload}
 }
