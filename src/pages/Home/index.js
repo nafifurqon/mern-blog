@@ -8,11 +8,11 @@ import { useSelector, useDispatch } from 'react-redux'
 const Home = () => {
     const [dataBlog, setDataBlog] = useState([]);
     // const {dataBlogs, name} = useSelector(state => state);
-    const stateGlobal = useSelector(state => state);
+    const { dataBlogs } = useSelector(state => state.HomeReducer);
     const dispatch = useDispatch();
 
-    console.log('state global: ', stateGlobal);
-    // console.log('data blog state global:', dataBlogs)
+    // console.log('state global: ', stateGlobal);
+    console.log('data blog state global:', dataBlogs)
     useEffect(() => {
         setTimeout(() => {
             // dispatch({type: 'UPDATE_NAME'})
@@ -24,7 +24,7 @@ const Home = () => {
             const responseAPI = result.data;
 
             setDataBlog(responseAPI.data);
-            // dispatch({type: 'UPDATE_DATA_BLOG', payload: responseAPI.data})
+            dispatch({type: 'UPDATE_DATA_BLOG', payload: responseAPI.data})
         })
         .catch(err => {
             console.log('error: ', err)
