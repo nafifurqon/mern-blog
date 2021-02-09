@@ -29,7 +29,7 @@ const Home = () => {
             <Gap height={20} />
             <div className="content-wrapper">
                 {dataBlog.map(blog => {
-                    console.log('blog: ', blog)
+                    return <BlogItem />>
                 })}
             </div>
             <div className="pagination">
