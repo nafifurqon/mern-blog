@@ -17,7 +17,7 @@ const homeReducer = (state = initialStateHome, action) => {
     if(action.type === 'UPDATE_PAGE'){
         return {
             ...state,
-            dataBlog: action.payload
+            page: action.payload
         }
     }
 

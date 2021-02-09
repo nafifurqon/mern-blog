@@ -8,12 +8,14 @@ import { setDataBlog } from '../../config/redux/action'
 
 const Home = () => {
     const [counter, setCounter] = useState(1);
-    const { dataBlog } = useSelector(state => state.homeReducer);
+    const { dataBlog, page } = useSelector(state => state.homeReducer);
     const dispatch = useDispatch();
+
+    console.log('page: ', page);
 
     useEffect(() => {
         dispatch(setDataBlog(counter))
-    }, [dispatch])
+    }, [counter, dispatch])
 
     const history = useHistory();
 
@@ -23,7 +25,7 @@ const Home = () => {
     }
 
     const next = () => {
-        setCounter(counter + 1);
+        setCounter(counter === page.totalPage ? page.totalPage : counter + 1);
         console.log('counter', counter);
     }
 
@@ -47,7 +49,7 @@ const Home = () => {
             <div className="pagination">
                 <Button title="previous" onClick={previous} />
                 <Gap width={20} />
-                <p className="text-page">1 / 3</p>
+                <p className="text-page">{page.currentPage} / {page.totalPage}</p>
                 <Gap width={20} />
                 <Button title="next" onClick={next} />
             </div>

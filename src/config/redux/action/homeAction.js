@@ -7,7 +7,7 @@ export const setDataBlog = (page) => (dispatch) => {
         console.log(responseAPI);
         dispatch({type: 'UPDATE_DATA_BLOG', payload: responseAPI.data})
         dispatch({
-            type: 'UPDATE_DATA_BLOG', 
+            type: 'UPDATE_PAGE', 
             payload: {
                 currentPage: responseAPI.current_page , 
                 totalPage: Math.ceil(responseAPI.total_data / responseAPI.per_page)
