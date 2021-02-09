@@ -4,6 +4,7 @@ import './home.scss'
 import { useHistory } from 'react-router-dom'
 import Axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
+import { setDataBlog } from '../../config/redux/action'
 
 const Home = () => {
     const { dataBlog } = useSelector(state => state.homeReducer);
@@ -14,7 +15,7 @@ const Home = () => {
         .then(result => {
             const responseAPI = result.data;
 
-            dispatch()
+            dispatch(setDataBlog(responseAPI.data))
         })
         .catch(err => {
             console.log('error: ', err)
