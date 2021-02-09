@@ -1,14 +1,14 @@
 const { createStore, combineReducers } = require('redux');
 
 const initialStateHome = {
-    dataBlogs: []
+    dataBlog: []
 }
 
 const HomeReducer = (state = initialStateHome, action) => {
     if(action.type === 'UPDATE_DATA_BLOG'){
         return {
             ...state,
-            dataBlogs: action.payload
+            dataBlog: action.payload
         }
     }
     return state;
