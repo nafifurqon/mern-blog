@@ -3,14 +3,19 @@ import {Button, BlogItem, Gap} from '../../components'
 import './home.scss'
 import { useHistory } from 'react-router-dom'
 import Axios from 'axios'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 const Home = () => {
     const [dataBlog, setDataBlog] = useState([]);
-
     const stateGlobal = useSelector(state => state);
+    const dispatch = useDispatch();
+
     console.log('state global: ', stateGlobal);
     useEffect(() => {
+        setTimeout(() => {
+            dispatch({type: 'UPDATE_NAME'})
+        }, 3000);
+        
         Axios.get('http://localhost:4000/v1/blog/posts?page=2&perPage=2')
         .then(result => {
             // console.log('data: ', result.data)
@@ -30,6 +35,7 @@ const Home = () => {
             <div className="create-wrapper">
                 <Button title="create blog" onClick={() => history.push('/create-blog')} />
             </div>
+            <p>{stateGlobal.name}</p>
             <Gap height={20} />
             <div className="content-wrapper">
                 {dataBlog.map(blog => {

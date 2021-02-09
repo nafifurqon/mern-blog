@@ -6,6 +6,18 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
+    if(action.type === 'UPDATE_DATA_BLOG'){
+        return {
+            ...state,
+            dataBlog: action.payload
+        }
+    }
+    if(action.type === 'UPDATE_NAME'){
+        return {
+            ...state,
+            name: 'Furqon'
+        }
+    }
     return state;
 };
 
