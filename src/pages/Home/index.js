@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import {Button, BlogItem, Gap} from '../../components'
 import './home.scss'
 import { useHistory } from 'react-router-dom'
-import Axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
 import { setDataBlog } from '../../config/redux/action'
 
@@ -10,8 +9,6 @@ const Home = () => {
     const [counter, setCounter] = useState(1);
     const { dataBlog, page } = useSelector(state => state.homeReducer);
     const dispatch = useDispatch();
-
-    console.log('page: ', page);
 
     useEffect(() => {
         dispatch(setDataBlog(counter))
@@ -21,12 +18,10 @@ const Home = () => {
 
     const previous = () => {
         setCounter(counter <= 1 ? 1 : counter - 1 );
-        console.log('counter', counter);
     }
 
     const next = () => {
         setCounter(counter === page.totalPage ? page.totalPage : counter + 1);
-        console.log('counter', counter);
     }
 
     return (
@@ -43,7 +38,9 @@ const Home = () => {
                     title={blog.title} 
                     body={blog.body}
                     name={blog.author.name} 
-                    date={blog.createdAt} />
+                    date={blog.createdAt} 
+                    _id={blog._id}
+                    />
                 })}
             </div>
             <div className="pagination">
