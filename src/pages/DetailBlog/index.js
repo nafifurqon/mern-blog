@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import {RegisterBg} from '../../assets'
 import './detailBlog.scss'
 import {Gap, Link} from '../../components'
 import { useHistory, withRouter } from 'react-router-dom'
