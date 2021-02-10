@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {RegisterBg} from '../../assets'
 import './detailBlog.scss'
 import {Gap, Link} from '../../components'
-import { useHistory } from 'react-router-dom'
+import { useHistory, withRouter } from 'react-router-dom'
+import Axios from 'axios'
 
-const DetailBlog = () => {
+const DetailBlog = (props) => {
+    useEffect(() => {
+        console.log('params: ', props.match.params.id)
+    }, [])
+    
     const history = useHistory();
     
     return (
@@ -21,4 +26,4 @@ const DetailBlog = () => {
     )
 }
 
-export default DetailBlog
+export default withRouter(DetailBlog)
