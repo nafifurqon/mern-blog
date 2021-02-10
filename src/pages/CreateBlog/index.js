@@ -9,6 +9,10 @@ const CreateBlog = () => {
     const [body, setBody] = useState('');
     const history = useHistory();
 
+    const onSubmit = () => {
+        console.log('title: ', title);
+        console.log('body: ', body);
+    }
     return (
         <div className="blog-post">
             <Link title="kembali" onClick={() => history.push('/')} />
@@ -18,7 +22,7 @@ const CreateBlog = () => {
             <TextArea value={body} onChange={(e) => setBody(e.target.value)} />
             <Gap height={20} />
             <div className="button-action">
-                <Button title="Save" />
+                <Button title="Save" onClick={onSubmit} />
             </div>
         </div>
     )
