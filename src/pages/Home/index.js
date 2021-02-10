@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import {Button, BlogItem, Gap} from '../../components'
 import './home.scss'
 import { useHistory } from 'react-router-dom'
-import Axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
 import { setDataBlog } from '../../config/redux/action'
 
@@ -43,7 +42,9 @@ const Home = () => {
                     title={blog.title} 
                     body={blog.body}
                     name={blog.author.name} 
-                    date={blog.createdAt} />
+                    date={blog.createdAt} 
+                    _id={blog._id}
+                    />
                 })}
             </div>
             <div className="pagination">
