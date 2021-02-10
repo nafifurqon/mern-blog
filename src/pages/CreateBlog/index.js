@@ -1,44 +1,19 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {Button, Input, Upload, TextArea, Gap, Link} from '../../components'
 import './createBlog.scss'
 import { useHistory } from 'react-router-dom'
-import Axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
-import { setForm, setImgPreview } from '../../config/redux/action'
+import { setForm, setImgPreview, postToAPI } from '../../config/redux/action'
 
 
 const CreateBlog = () => {
     const { form, imgPreview } = useSelector(state => state.createBlogReducer);
     const { title, body, image } = form;
     const dispatch = useDispatch();
-
-    // const [title, setTitle] = useState('');
-    // const [body, setBody] = useState('');
-    // const [image, setImage] = useState('');
-    // const [imagePreview, setImagePreview] = useState(null);
     const history = useHistory();
 
     const onSubmit = () => {
-        console.log('title: ', title);
-        console.log('body: ', body);
-        console.log('image: ', image);
-
-        const data = new FormData();
-        data.append('title', title);
-        data.append('body', body);
-        data.append('image', image);
-
-        Axios.post('http://localhost:4000/v1/blog/post', data, {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        })
-        .then(res => {
-            console.log('post success: ', res)
-        })
-        .catch(err => {
-            console.log('error: ', err)
-        })
+        postToAPI(form);
     }
 
     const onImageUpload = (e) => {
