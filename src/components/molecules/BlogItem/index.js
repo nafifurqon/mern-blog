@@ -9,7 +9,7 @@ const BlogItem = (props) => {
     const {image, title, name, date, body} = props
     return (
         <div className="blog-item">
-            <img cllassName="image-thumb" src={image} alt="post" />
+            <img className="image-thumb" src={image} alt="post" />
             <div className="content-detail">
                 <p className="title">{title}</p>
                 <p className="author">{name} - {date}</p>
