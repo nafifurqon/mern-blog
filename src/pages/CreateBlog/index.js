@@ -4,6 +4,7 @@ import './createBlog.scss'
 import { useHistory, withRouter } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { setForm, setImgPreview, postToAPI } from '../../config/redux/action'
+import Axios from 'axios'
 
 
 const CreateBlog = (props) => {
@@ -15,8 +16,20 @@ const CreateBlog = (props) => {
 
     useEffect(() => {
         console.log('params: ', props)
-        if(props.match.params.id){
+        const id = props.match.params.id
+        if(id){
             setIsUpdate(true)
+            Axios.get(`http://localhost:4000/v1/blog/post/${id}`)
+            .then(res => {
+                const data = res.data.data
+                console.log('succes: ', data)
+                dispatch(setForm('title', data.title))
+                dispatch(setForm('body', data.body))
+                dispatch(setImgPreview(`http://localhost:4000/${data.image}`))
+            })
+            .catch(err => {
+                console.log('error: ', err)
+            })
         }
     }, [props])
 

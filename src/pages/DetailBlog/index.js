@@ -9,7 +9,7 @@ const DetailBlog = (props) => {
     const [data, setData] = useState({})
     useEffect(() => {
         const id = props.match.params.id
-        Axios(`http://localhost:4000/v1/blog/post/${id}`)
+        Axios.get(`http://localhost:4000/v1/blog/post/${id}`)
         .then(res => {
             console.log('success: ', res)
             setData(res.data.data)
