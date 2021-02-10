@@ -7,8 +7,15 @@ import Axios from 'axios'
 
 const DetailBlog = (props) => {
     useEffect(() => {
-        console.log('params: ', props.match.params.id)
-    }, [])
+        const id = props.match.params.id
+        Axios(`http://localhost:4000/v1/blog/post/${id}`)
+        .then(res => {
+            console.log('success: ', res)
+        })
+        .catch(err => {
+            console.log('error: ', err)
+        })
+    }, [props])
     
     const history = useHistory();
     
