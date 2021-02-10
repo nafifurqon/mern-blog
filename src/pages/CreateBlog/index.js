@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {Button, Input, Upload, TextArea, Gap, Link} from '../../components'
 import './createBlog.scss'
 import { useHistory } from 'react-router-dom'
+import Axios from 'axios'
 
 
 const CreateBlog = () => {
@@ -15,6 +16,23 @@ const CreateBlog = () => {
         console.log('title: ', title);
         console.log('body: ', body);
         console.log('image: ', image);
+
+        const data = new FormData();
+        data.append('title', title);
+        data.append('body', body);
+        data.append('image', image);
+
+        Axios.post('http://localhost:4000/v1/blog/post', data, {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        })
+        .then(res => {
+            console.log('post success: ', res)
+        })
+        .catch(err => {
+            console.log('error: ', err)
+        })
     }
 
     const onImageUpload = (e) => {
