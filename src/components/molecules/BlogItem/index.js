@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom'
 
 const BlogItem = (props) => {
     const history = useHistory();
-    const {image, title, name, date, body, _id} = props
+    const {image, title, name, date, body, _id, onDelete} = props
     return (
         <div className="blog-item">
             <img className="image-thumb" src={image} alt="post" />
@@ -16,7 +16,7 @@ const BlogItem = (props) => {
                     <div className="edit-wrapper">
                         <p className="edit" onClick={() => history.push(`/create-blog/${_id}`)} >Edit</p> 
                         | 
-                        <p className="delete">Delete</p>
+                        <p className="delete" onClick={onDelete}>Delete</p>
                     </div>
                 </div>
                 <p className="author">{name} - {date}</p>
