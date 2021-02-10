@@ -3,7 +3,7 @@ import {Button, Input, Upload, TextArea, Gap, Link} from '../../components'
 import './createBlog.scss'
 import { useHistory, withRouter } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { setForm, setImgPreview, postToAPI } from '../../config/redux/action'
+import { setForm, setImgPreview, postToAPI, updateToAPI } from '../../config/redux/action'
 import Axios from 'axios'
 
 
@@ -34,7 +34,14 @@ const CreateBlog = (props) => {
     }, [props])
 
     const onSubmit = () => {
-        postToAPI(form);
+        const id = props.match.params.id
+        if(isUpdate){
+            console.log('update data')
+            updateToAPI(form, id);
+        } else {
+            console.log('create data')
+            postToAPI(form);
+        }
     }
 
     const onImageUpload = (e) => {
