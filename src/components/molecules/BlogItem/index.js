@@ -16,7 +16,7 @@ const BlogItem = (props) => {
                     <div className="edit-wrapper">
                         <p className="edit" onClick={() => history.push(`/create-blog/${_id}`)} >Edit</p> 
                         | 
-                        <p className="delete" onClick={onDelete}>Delete</p>
+                        <p className="delete" onClick={() => onDelete(_id)}>Delete</p>
                     </div>
                 </div>
                 <p className="author">{name} - {date}</p>
