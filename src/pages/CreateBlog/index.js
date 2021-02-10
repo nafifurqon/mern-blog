@@ -1,16 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Button, Input, Upload, TextArea, Gap, Link} from '../../components'
 import './createBlog.scss'
-import { useHistory } from 'react-router-dom'
+import { useHistory, withRouter } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { setForm, setImgPreview, postToAPI } from '../../config/redux/action'
 
 
-const CreateBlog = () => {
+const CreateBlog = (props) => {
     const { form, imgPreview } = useSelector(state => state.createBlogReducer);
     const { title, body, image } = form;
     const dispatch = useDispatch();
     const history = useHistory();
+
+    useEffect(() => {
+        console.log('params: ', props)
+    }, [props])
 
     const onSubmit = () => {
         postToAPI(form);
@@ -36,4 +40,4 @@ const CreateBlog = () => {
     )
 }
 
-export default CreateBlog
+export default withRouter(CreateBlog)
